@@ -44,7 +44,7 @@ class PassengerBooker extends Thread {
 
 }
 
-class MT3 {
+public class MT3 {
     public static void main(String[] args) {
         
         TicketResource r = new TicketResource(30);
