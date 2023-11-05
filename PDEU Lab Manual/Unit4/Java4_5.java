@@ -35,7 +35,7 @@ public class Java4_5 {
     class DialogueOpener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String name = nameField.getText();
-            JOptionPane.showMessageDialog(frame, "Hello, " + name + "!");
+            JOptionPane.showMessageDialog(frame, "Hello " + name + ", from Java4_5.");
         }
     }
 
