@@ -14,7 +14,10 @@ class Box {
         this.width = width;
         this.height = height;
 
-        System.out.println("- - - - Box created successfully. - - - -");
+    }
+
+    public String toString() {
+        return "\n- - - - Box created successfully - - - -\nLength: " + this.length + " Width: " + this.width + " Height: " + this.height + "\n";
     }
 }
 
@@ -23,13 +26,15 @@ public class Java3_12 {
     public static void main(String[] args) {
         
         Box validBox = new Box(1, 2, 3);
+        System.out.println(validBox);
 
         try {
             Box invalidBox = new Box(0, 1, 2);
+            System.out.println(invalidBox);
         }
 
         catch (Exception e) {
-            System.out.println(e);
+            System.out.println("\n- - - - Box creation failed - - - -\n" + e + "\n");
         }
     }   
 }
