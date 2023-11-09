@@ -7,7 +7,7 @@ public class Java3_4 {
         
         try {
 
-            bw = new BufferedWriter(new FileWriter("Fourth.txt"));
+            bw = new BufferedWriter(new FileWriter("markdetails.txt"));
 
             for (int i = 1; i <= num; i++) {
 
@@ -46,7 +46,7 @@ public class Java3_4 {
         
         try {
 
-            br = new BufferedReader(new FileReader("Fourth.txt"));
+            br = new BufferedReader(new FileReader("markdetails.txt"));
 
             String line = br.readLine();
 
