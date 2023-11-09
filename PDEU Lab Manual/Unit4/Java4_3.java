@@ -17,7 +17,7 @@ public class Java4_3 {
 
         JMenuBar menuBar = new JMenuBar();
 
-        int[] noOfProg = {8, 3, 15, 6};
+        int[] noOfProg = {8, 4, 15, 6};
 
         for (int unit = 1; unit <= noOfProg.length; unit++) {
 
