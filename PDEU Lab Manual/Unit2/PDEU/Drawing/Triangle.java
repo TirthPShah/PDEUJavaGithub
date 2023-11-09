@@ -2,27 +2,31 @@ package PDEU.Drawing;
 
 public class Triangle extends Shape {
     
-    public double base;
-    public double height;
+    public double firstSide;
+    public double secondSide;
+    public double thirdSide;
 
-    public Triangle(String colour, String pattern, double base, double height) {
-        this.color = colour;
+    public Triangle(String color, String pattern, double firstSide, double secondSide, double thirdSide) {
+        this.color = color;
         this.pattern = pattern;
-        this.base = base;
-        this.height = height;
+        this.firstSide = firstSide;
+        this.secondSide = secondSide;
+        this.thirdSide = thirdSide;
     }
 
     @Override
     public double calculateArea() {
-        return 0.5 * base * height;
+        
+        double s = (firstSide + secondSide + thirdSide) / 2;
+        return Math.sqrt(s * (s - firstSide) * (s - secondSide) * (s - thirdSide));
     }
 
     @Override
     public double calculatePerimeter() {
-        return 3 * base;
+        return (firstSide + secondSide + thirdSide);
     }
 
     public String toString() {
-        return "Triangle:\nColor: " + this.color + " Pattern: " + this.pattern + " Base: " + this.base + " Height: " + this.height;
+        return "Triangle:\nColor: " + this.color + " Pattern: " + this.pattern + " FirstSide: " + this.firstSide + " SecondSide: " + this.secondSide + " ThirdSide: " + this.thirdSide;
     }
 }

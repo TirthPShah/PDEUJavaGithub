@@ -52,7 +52,7 @@ public class Test {
     public static void main(String[] args) {
 
         Rectangle r = new Rectangle("Yellow", "Rect", 10, 20);
-        Triangle t = new Triangle("Yellow", "Tri", 10, 20);
+        Triangle t = new Triangle("Yellow", "Tri", 10, 20, 30);
         Circle c = new Circle("Yellow", "Cir", 20);
         Square s = new Square("Yellow", "Square", 20);
 
