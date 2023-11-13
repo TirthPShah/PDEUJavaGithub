@@ -49,8 +49,6 @@ public class Java3_9 {
         
         BankAccount ba = new BankAccount(10000000);
 
-        System.out.println("Initial Balance: " + ba.getAvailableBalance() + "\n");
-
         JointAccountHolder h1 = new JointAccountHolder(ba, "Person1", 5000000);
         JointAccountHolder h2 = new JointAccountHolder(ba, "Person2", 3000000);
         JointAccountHolder h3 = new JointAccountHolder(ba, "Person3", 2500000);
@@ -70,7 +68,7 @@ public class Java3_9 {
         }
 
         finally {
-            System.out.println("Balance Available After Booking All: " + ba.getAvailableBalance() + "\n");
+            System.out.println("Tickets Available After Booking All: " + ba.getAvailableBalance() + "\n");
         }
     }
 }
