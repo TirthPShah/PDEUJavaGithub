@@ -1,74 +1,110 @@
-class BankAccount {
+import java.util.*;
 
-    long balance;
+class Printer {
 
-    public BankAccount(long balance) {
-        this.balance = balance;
-    }
+    boolean isOdd = false;
+    
+    public synchronized void printOdd(int i) {
 
-    public long getAvailableBalance() {
-        return balance;
-    }
-
-    public synchronized void withdraw(String user, long amount) {
-
-        if(amount > balance) {
-            System.out.println("Transaction failed for " + user + ", because of available funds are less than the funds asked for.\n");
-            return;
+        while (isOdd) {
+            
+            try {
+                wait();
+            } 
+            
+            catch (Exception e) {
+                System.out.println(e);
+            }
         }
 
-        System.out.println(user + " trying to withdraw " + amount + ".");
+        System.out.println("Odd: " + i);
+        isOdd = true;
+        notify();
 
-        balance -= amount;
+    }
 
-        System.out.println("Transaction successful for " + user + " for " + amount + "." + "\nBalance Available after booking: " + balance + "\n");
+    public synchronized void printEven(int i) {
+
+        while (!isOdd) {
+
+            try {
+                wait();
+            }
+
+            catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+
+        System.out.println("Even: " + i);
+        isOdd = false;
+        notify();
+
     }
 
 }
 
-class JointAccountHolder extends Thread {
+class PrintEven extends Thread {
     
-    BankAccount ba;
-    String user;
-    long amount;
+    Printer p;
+    int num;
 
-    public JointAccountHolder(BankAccount ba, String user, long amount) {
-        this.ba = ba;
-        this.user = user;
-        this.amount = amount;
+    public PrintEven (Printer p, int num) {
+        this.p = p;
+        this.num = num;
     }
 
     public void run() {
-        ba.withdraw(user, amount);
-    }
 
+        for(int i = 2; i <= num; i = i + 2) {   
+            p.printEven(i);
+        }
+
+    }
 }
 
-public class Java3_9 {
+class PrintOdd extends Thread {
+    
+    Printer p;
+    int num;
+
+    public PrintOdd(Printer p, int num) {
+        this.p = p;
+        this.num = num;
+    }
+
+    public void run() {
+
+        for(int i = 1; i <= num; i = i + 2) {
+            p.printOdd(i);
+        }
+
+    }
+}
+public class Java3_11 {
+    
     public static void main(String[] args) {
         
-        BankAccount ba = new BankAccount(10000000);
+        Scanner sc = new Scanner (System.in);
 
-        JointAccountHolder h1 = new JointAccountHolder(ba, "Person1", 5000000);
-        JointAccountHolder h2 = new JointAccountHolder(ba, "Person2", 3000000);
-        JointAccountHolder h3 = new JointAccountHolder(ba, "Person3", 2500000);
+        Printer p = new Printer();
 
-        h1.start();
-        h2.start();
-        h3.start();
+        System.out.print("Enter the number of elements you want to print: ");
+        int n = sc.nextInt();
 
+        PrintEven pe = new PrintEven(p, n);
+        PrintOdd po = new PrintOdd(p, n);
+
+        po.start();
+        pe.start();
+        
         try {
-            h1.join();
-            h2.join();
-            h3.join();
+            sc.close();
         }
 
         catch (Exception e) {
             System.out.println(e);
         }
-
-        finally {
-            System.out.println("Tickets Available After Booking All: " + ba.getAvailableBalance() + "\n");
-        }
+        
     }
 }

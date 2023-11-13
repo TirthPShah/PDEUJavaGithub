@@ -28,6 +28,8 @@ public class Java3_13 {
         User user1 = new User(15);
         User user2 = new User(20);
 
+        System.out.println("- - - - User 1 Applying for Vehicle License - - - -");
+
         try {
             user1.applyForVehicleLicense();
         }
@@ -35,6 +37,8 @@ public class Java3_13 {
         catch (Exception e) {
             System.out.println(e);
         }
+        
+        System.out.println("\n\n- - - - User 2 Applying for Vehicle License - - - -");
 
         user2.applyForVehicleLicense();
     }
