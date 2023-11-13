@@ -38,7 +38,7 @@ public class Java3_13 {
             System.out.println(e);
         }
         
-        System.out.println("\n\n- - - - User 2 Applying for Vehicle License - - - -");
+        System.out.println("\n- - - - User 2 Applying for Vehicle License - - - -");
 
         user2.applyForVehicleLicense();
     }
