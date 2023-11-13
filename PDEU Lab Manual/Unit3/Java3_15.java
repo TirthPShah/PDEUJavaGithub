@@ -49,7 +49,7 @@ public class Java3_15 {
 
         return -1;
     }
-    
+
     public static void main(String[] args) {
 
         int[] arr = { 2, 4, 6, 8, 10, 12, 14 };
@@ -57,6 +57,8 @@ public class Java3_15 {
         int key = 7;
 
         try {
+
+            System.out.println("- - - - Correct Binary Search - - - -");
 
             int returnedIndex = binarySearch(arr, key);
 
@@ -76,6 +78,8 @@ public class Java3_15 {
 
         try {
 
+            System.out.println("\n- - - - Wrong Binary Search - - - -");
+            
             int index = wrongBinarySearch(arr, key);
 
             if (index != -1) {
