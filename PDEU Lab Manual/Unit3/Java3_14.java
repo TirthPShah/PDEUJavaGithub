@@ -24,10 +24,12 @@ public class Java3_14 {
             System.out.println("\nGeneral Exception: " + e);
         
         }
+        
+        //Nested Try
 
         try {
 
-            performFileOperation("nonexistent_file.txt"); //Nested Try
+            performFileOperation("nonexistent_file.txt");
         
         } catch (FileNotFoundException e) {
 
@@ -62,7 +64,7 @@ public class Java3_14 {
                         int value = Integer.parseInt(line);
                         int result = 100 / value;
 
-                        BufferedWriter writer = new BufferedWriter(new FileWriter("FourteenthOutput.txt", true));
+                        BufferedWriter writer = new BufferedWriter(new FileWriter("FourteenthOutput.txt", false));
 
                         try {
                             writer.append("Result: " + result + "\n");
@@ -83,7 +85,11 @@ public class Java3_14 {
                     }
                 }
 
-            } 
+            }
+            
+            catch (Exception e) {
+                System.out.println("Error for middle try: " + e);
+            }
             
             finally {
                 reader.close(); // Close the input file
