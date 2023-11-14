@@ -3,13 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-class BoxLayoutExample {
-    private JFrame frame;
+public class Java4_6 extends JFrame implements ActionListener{
+
     private JPanel boxPanel;
 
-    public BoxLayoutExample() {
-        frame = new JFrame("Piano Layout");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public Java4_6() {
+
+        super("Piano Layout");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         boxPanel = new JPanel();
         boxPanel.setLayout(new GridLayout(1, 7));
@@ -23,27 +24,22 @@ class BoxLayoutExample {
             button.setOpaque(true);
             button.setBorderPainted(false);
 
-            button.addActionListener(new ButtonListener());
+            button.addActionListener(this);
             boxPanel.add(button);
         }
 
-        frame.add(boxPanel);
-        frame.setSize(700, 300);
-        frame.setVisible(true);
+        add(boxPanel);
+        setSize(700, 300);
+        setVisible(true);
     }
 
-    class ButtonListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            JButton button = (JButton) e.getSource();
-            button.setBackground(Color.LIGHT_GRAY);
-        }
-    }
-}
 
-public class Java4_6 {
+    public void actionPerformed(ActionEvent e) {
+        JButton button = (JButton) e.getSource();
+        button.setBackground(Color.LIGHT_GRAY);
+    }
+
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new BoxLayoutExample();
-        });
+        new Java4_6();
     }
-}
+} 

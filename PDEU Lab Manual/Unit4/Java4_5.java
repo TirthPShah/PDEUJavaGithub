@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Java4_5 {
+public class Java4_5 implements ActionListener {
 
     private JFrame frame;
     private JTextField nameField;
@@ -23,7 +23,7 @@ public class Java4_5 {
         frame.add(form, BorderLayout.CENTER);
 
         JButton button = new JButton("Submit");
-        button.addActionListener(new DialogueOpener());
+        button.addActionListener(this);
 
         frame.add(button, BorderLayout.SOUTH);
 
@@ -32,11 +32,9 @@ public class Java4_5 {
         frame.setVisible(true);
     }
 
-    class DialogueOpener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            String name = nameField.getText();
-            JOptionPane.showMessageDialog(frame, "Hello " + name + ", from Java4_5.");
-        }
+    public void actionPerformed(ActionEvent e) {
+        String name = nameField.getText();
+        JOptionPane.showMessageDialog(frame, "Hello " + name + ", from Java4_5.");
     }
 
     public static void main(String[] args) {
