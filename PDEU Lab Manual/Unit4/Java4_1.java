@@ -3,10 +3,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Java4_1 {
-    public static void main(String[] args) {
+public class Java4_1 extends JFrame {
+    
+    public Java4_1() {
 
-        JFrame frame = new JFrame("Java4_1");
+        super("Java4_1");
 
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(5, 2));
@@ -41,11 +42,15 @@ public class Java4_1 {
 
         panel.add(submitButton);
 
-        frame.add(panel);
+        add(panel);
 
-        frame.setSize(400, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Java4_1();
     }
 }
 

@@ -2,21 +2,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Java4_2 {
-    public static void main(String[] args) {
+public class Java4_2 extends JFrame {
+    
+    public Java4_2() {
 
-        JFrame frame = new JFrame("Java4_2");
-        frame.setLayout(new BorderLayout());
+        super("Java4_2");
+        setLayout(new BorderLayout());
 
         JLabel messageLabel = new JLabel("Listening for key and mouse events", SwingConstants.CENTER);
-        frame.add(messageLabel, BorderLayout.CENTER);
+        add(messageLabel, BorderLayout.CENTER);
 
-        frame.addKeyListener(new KeyEventProcessor(messageLabel));
-        frame.addMouseListener(new MouseEventProcessor(messageLabel));
+        addKeyListener(new KeyEventProcessor(messageLabel));
+        addMouseListener(new MouseEventProcessor(messageLabel));
 
-        frame.setSize(400, 300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Java4_2();
     }
 }
 
