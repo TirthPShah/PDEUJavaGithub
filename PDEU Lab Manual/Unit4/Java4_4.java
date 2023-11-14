@@ -57,7 +57,7 @@ public class Java4_4 extends JFrame implements ActionListener{
 
         add(operationPanel, BorderLayout.SOUTH);
 
-        pack();
+        setSize(400,300);
         setVisible(true);
     }
 

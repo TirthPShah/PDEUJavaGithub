@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Java4_5 {
 
     private JFrame frame;
-    private JTextField nameField; // Declare nameField as an instance variable
+    private JTextField nameField;
 
     public Java4_5() {
 
@@ -15,7 +15,7 @@ public class Java4_5 {
         JPanel form = new JPanel(new GridLayout(1, 2));
 
         JLabel nameLabel = new JLabel("Name: ");
-        nameField = new JTextField(10); // Assign the instance variable
+        nameField = new JTextField(10);
 
         form.add(nameLabel);
         form.add(nameField);
