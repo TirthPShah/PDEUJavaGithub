@@ -1,19 +1,21 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.*;
 
-public class Java4_3 {
+public class Java4_3 extends JFrame {
 
-    private JFrame frame;
     private JTextArea codeArea;
 
     public Java4_3() {
 
-        frame = new JFrame("Java4_3");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        super("Java4_3");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 600);
+
+        codeArea = new JTextArea();
+        codeArea.setEditable(false);
+        codeArea.setFont(new Font("Courier New", Font.PLAIN, 14));
 
         JMenuBar menuBar = new JMenuBar();
 
@@ -31,7 +33,7 @@ public class Java4_3 {
                 String actionCommand = "Unit" + unit + " " + progName;
 
                 menuItem.setActionCommand(actionCommand);
-                menuItem.addActionListener(new MenuItemListener());
+                menuItem.addActionListener(new MenuItemListener(codeArea));
 
                 unitMenu.add(menuItem);
             }
@@ -39,71 +41,70 @@ public class Java4_3 {
             menuBar.add(unitMenu);
         }
 
-        frame.setJMenuBar(menuBar);
-
-        codeArea = new JTextArea();
-        codeArea.setEditable(false);
-        codeArea.setFont(new Font("Courier New", Font.PLAIN, 14));
+        setJMenuBar(menuBar);
 
         JScrollPane scrollPane = new JScrollPane(codeArea);
-        frame.add(scrollPane, BorderLayout.CENTER);
+        add(scrollPane, BorderLayout.CENTER);
 
-        frame.setVisible(true);
+        setVisible(true);
+    }
+    
+    public static void main(String[] args) {
+        new Java4_3();
+    }
+}
+
+class MenuItemListener implements ActionListener {
+
+    private JTextArea codeArea;
+
+    public MenuItemListener(JTextArea codeArea) {
+        this.codeArea = codeArea;
     }
 
-    class MenuItemListener implements ActionListener {
+    public void actionPerformed(ActionEvent e) {
 
-        public void actionPerformed(ActionEvent e) {
+        String actionCommand = e.getActionCommand();
 
-            String actionCommand = e.getActionCommand();
+        String[] parts = actionCommand.split(" ");
 
-            String[] parts = actionCommand.split(" ");
+        String unitName = parts[0];
+        String lessonName = parts[1];
+        String fileName = "../" + unitName + "/" + lessonName + ".java";
 
-            String unitName = parts[0];
-            String lessonName = parts[1];
-            String fileName = "../" + unitName + "/" + lessonName + ".java";
+        BufferedReader reader = null;
 
-            BufferedReader reader = null;
+        try {
+
+            reader = new BufferedReader(new FileReader(fileName));
+
+            codeArea.setText("");
+
+            String line = reader.readLine();
+
+            while (line != null) {
+                
+                codeArea.append(line);
+                codeArea.append("\n");
+                line = reader.readLine();
+
+            }
+
+        } 
+        
+        catch (Exception er) {
+            codeArea.setText(er.toString());
+        }
+
+        finally {
 
             try {
+                reader.close();
+            }
 
-                reader = new BufferedReader(new FileReader(fileName));
-
-                codeArea.setText("");
-
-                String line = reader.readLine();
-
-                while (line != null) {
-                    
-                    codeArea.append(line);
-                    codeArea.append("\n");
-                    line = reader.readLine();
-
-                }
-
-            } 
-            
             catch (Exception er) {
                 codeArea.setText(er.toString());
             }
-
-            finally {
-
-                try {
-                    reader.close();
-                }
-
-                catch (Exception er) {
-                    codeArea.setText(er.toString());
-                }
-            }
         }
-    }
-    
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new Java4_3();
-        });
     }
 }
