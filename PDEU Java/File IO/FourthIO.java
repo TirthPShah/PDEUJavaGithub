@@ -2,56 +2,100 @@ import java.util.*;
 import java.io.*;
 
 public class FourthIO {
+
+    public static void storeInput(int num, Scanner sc, BufferedWriter bw) {
+        
+        try {
+
+            bw = new BufferedWriter(new FileWriter("Fourth.txt"));
+
+            for (int i = 1; i <= num; i++) {
+
+                System.out.print("\nEnter the name of the " + i + "th person: ");
+                String name = sc.nextLine().trim();
+
+                System.out.print("Enter marks for " + name + ": ");
+                int marks = sc.nextInt();
+
+                sc.nextLine();
+
+                bw.write(name + " " + marks);
+                bw.newLine();
+
+            }
+            
+        } 
+        
+        catch (Exception e) {
+            System.out.println("Error: " + e);
+        } 
+        
+        finally {
+            
+            try {
+                bw.close();
+            } 
+            
+            catch (Exception e) {
+                System.out.println("Error: " + e);
+            }
+        }
+    }
+
+    public static void readInput(int num, Scanner sc, BufferedReader br) {
+        
+        try {
+
+            br = new BufferedReader(new FileReader("Fourth.txt"));
+
+            String line = br.readLine();
+
+            System.out.println();
+
+            while(line != null) {
+
+                String[] splitted = line.split(" ");
+
+                int marks = Integer.parseInt(splitted[1]);
+
+                if (marks > 70) {
+                    System.out.println(splitted[0] + " has scored " + marks + " marks.");
+                }
+
+                line = br.readLine();
+            }
+
+            System.out.println();
+
+        } 
+        
+        catch (Exception e) {
+            System.out.println("Error: " + e);
+        } 
+        
+        finally {
+
+            try {
+                br.close();
+            } 
+            
+            catch (Exception e) {
+                System.out.println("Error: " + e);
+            }
+
+        }
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         BufferedReader br = null;
         BufferedWriter bw = null;
 
-        System.out.print("Enter the number of entries: ");
+        System.out.print("\nEnter the number of entries: ");
         int num = sc.nextInt();
         sc.nextLine(); // Consume the newline character
 
-        try {
-            bw = new BufferedWriter(new FileWriter("Fourth.txt"));
+        storeInput(num, sc, bw);
+        readInput(num, sc, br);
 
-            for (int i = 1; i <= num; i++) {
-                System.out.print("Enter the name of the " + i + "th person: ");
-                String name = sc.nextLine().trim(); // Read the entire line and trim whitespace
-                System.out.print("Enter marks for " + name + ": ");
-                int marks = sc.nextInt();
-                sc.nextLine(); // Consume the newline character
-
-                bw.write(name + " " + marks); // Add space between name and marks
-                bw.newLine();
-            }
-
-            br = new BufferedReader(new FileReader("Fourth.txt"));
-
-            String line = null;
-
-            while ((line = br.readLine()) != null) {
-                String[] arr = line.split(" ");
-                System.out.println(arr.length);
-
-                if (arr.length == 2) {
-                    String name = arr[0];
-                    int marks = Integer.parseInt(arr[1]);
-
-                    if (marks > 70) {
-                        System.out.println(name + " has scored " + marks + " marks.");
-                    }
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Error: " + e);
-        } finally {
-            try {
-                if (br != null) br.close();
-                if (bw != null) bw.close();
-                if (sc != null) sc.close();
-            } catch (IOException e) {
-                System.out.println("Error: " + e);
-            }
-        }
     }
 }

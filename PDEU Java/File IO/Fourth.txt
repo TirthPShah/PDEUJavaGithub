@@ -1,2 +1,12 @@
-Tirth 78 76
-Rudra 80
+Tirth 85
+Rudra 87
+Shreyas 91
+Darshan 95
+Yaxil 99
+Java 23
+DECO 43
+DataStructure 56
+Microprocessor 78
+Honda 80
+Mercedes 84
+TwelthMan 71

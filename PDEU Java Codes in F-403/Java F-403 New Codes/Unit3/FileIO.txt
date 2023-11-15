@@ -1,0 +1,30 @@
+/*1. java.io.File class contains all API to get metadata - related information.
+Binary IO - FileInput/OutputStream - byte or byte[] reading- writting
+                DataInput/OutputStream - primitive type reading-writting
+		ObjectInput/OutputStream - reading - writting of Serializable object
+
+Character - Oriented Stream FileReader/Writer - char reading or writting
+                            BufferedReader/Writer - more efficient allows line by line
+             reading.	
+	    PrintWriter - Allows to write all primitive and reference types to the file	 
+		*/
+
+1.WAP to read the given text file.Convert contents to lowercase and store 
+to other file.
+
+2. WAP to read the given text file.Search for particular word and replace that word with given word.and store the data to another text file. 
+
+3.WAP to remove duplicate lines from the given source file.and store it to another file.
+
+4.WAP to store the subject mark and student name to the file "markdeails.txt".Read the 
+file "markdetails.txt" and print the name of students having marks more than 70.(minimum 10 records.).
+
+5.WAP to encrypt the given file and decrypt it.File name should be entered from command line 
+argument.
+public void encrypt(InputStream is, OutputStream os, int key)
+public void decrypt(InputStream is, OutputStream os, int key).
+
+6.WAP to store Book object details(bookTitle, bookPrice, bookId) to the file "bookdetails.dat".(minimum 5 records).Read 
+the "bookdetails.dat", search for a book having particular title, print the book-title having
+highest price.
+

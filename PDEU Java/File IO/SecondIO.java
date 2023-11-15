@@ -10,14 +10,14 @@ public class SecondIO {
             br = new BufferedReader(new FileReader("SecondSource.txt"));
             bw = new BufferedWriter(new FileWriter("SecondDestination.txt"));
             
-            String tof = "Tirth";
-            String tor = "Oracle";
+            String toFind = "Tirth";
+            String toReplace = "Oracle";
 
             String name = br.readLine();
             
             while(name != null) {
 
-                name = name.replaceAll(tof, tor);
+                name = name.replaceAll(toFind, toReplace);
 
                 bw.append(name);
                 bw.append("\n");
